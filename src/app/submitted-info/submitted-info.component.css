@@ -1,0 +1,51 @@
+/* Style to center the content horizontally and vertically */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .submitted-data {
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    max-width: 600px; /* Max width of the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Styling for the headings and paragraphs */
+  .submitted-data h1 {
+    text-align: center; /* Center align the main heading */
+    margin-bottom: 20px; /* Space below the heading */
+  }
+  
+  .submitted-data h2 {
+    margin-top: 20px; /* Space above the subheading */
+  }
+  
+  .submitted-data p,
+  .submitted-data li {
+    margin-bottom: 10px; /* Space between paragraphs */
+  }
+  
+  /* Styling for the qualifications list */
+  .submitted-data ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+  }
+  
+  .submitted-data li {
+    background-color: #ffffff; /* White background for each list item */
+    border: 1px solid #ddd; /* Light border */
+    padding: 10px; /* Padding inside each list item */
+    margin-bottom: 10px; /* Space between list items */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .submitted-data strong {
+    font-weight: bold; /* Make labels bold */
+  }
+  

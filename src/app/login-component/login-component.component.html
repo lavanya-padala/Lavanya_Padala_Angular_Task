@@ -1,0 +1,80 @@
+<h3 style="text-align: center;">Login</h3>
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" autocomplete="name"/>
+    </div>
+    <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error-container">
+      <span class="text-danger">Name is Required</span>
+    </div>    
+
+    <div>
+      <label for="mobile">Mobile:</label>
+      <input id="mobile" formControlName="mobile" type="text" autocomplete="tel"/>
+    </div>
+    <div class="error-container" *ngIf="loginForm.get('mobile')?.touched">
+      <div *ngIf="loginForm.get('mobile')?.hasError('required')" class="error-message">
+        <span class="text-danger">Mobile is Required</span>
+      </div>
+      <div *ngIf="loginForm.get('mobile')?.hasError('pattern')" class="error-message">
+        <span class="text-danger">Invalid Mobile Number</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" autocomplete="email"/>
+    </div>
+    <div class="error-container" *ngIf="loginForm.get('email')?.touched">
+      <div *ngIf="loginForm.get('email')?.hasError('required')" class="error-message">
+        <span class="text-danger">Email is Required</span>
+      </div>
+      <div *ngIf="loginForm.get('email')?.hasError('email')" class="error-message">
+        <span class="text-danger">Invalid Email Address</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <textarea id="address" formControlName="address" rows="3" autocomplete="street-address"></textarea>
+    </div>
+    <div *ngIf="loginForm.get('address')?.invalid && loginForm.get('address')?.touched" class="error-container">
+      <span class="text-danger">Address is Required</span>
+    </div>  
+
+    <div formArrayName="qualifications" *ngFor="let qualification of qualifications.controls; let i = index">
+      <div [formGroupName]="i" class="qualification">
+        <label for="education-level-{{ i }}">Qualification:</label>
+        <select id="education-level-{{ i }}" formControlName="educationLevel" class="dropdown1">
+          <option value="Highschool">High School</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Bachelor's">Bachelor's</option>
+          <option value="Master's">Masters's</option>
+        </select>
+        <label for="passing-year-{{ i }}" style="display: inline-block;">Passing Year:</label>
+        <select id="passing-year-{{ i }}" formControlName="passingYear" class="dropdown1">
+          <option *ngFor="let year of passingYears" [value]="year">{{ year }}</option>
+        </select>
+        <label for="percentage-{{ i }}">Percentage:</label>
+        <input id="percentage-{{ i }}" formControlName="percentage" type="number" min="1" max="100" />
+        <div class="error-container" *ngIf="qualifications.at(i).get('percentage')?.touched">
+          <div *ngIf="qualifications.at(i).get('percentage')?.hasError('required')" class="error-message">
+            <span class="text-danger">Percentage is Required</span>
+          </div>
+          <div *ngIf="qualifications.at(i).get('percentage')?.hasError('min')" class="error-message">
+            <span class="text-danger">Percentage must be at least 1</span>
+          </div>
+          <div *ngIf="qualifications.at(i).get('percentage')?.hasError('max')" class="error-message">
+            <span class="text-danger">Percentage cannot be more than 100</span>
+          </div>
+        </div>
+        <button type="button" class="add-field" (click)="addQualification()">+</button>
+        <button type="button" class="remove-field" (click)="removeQualification(i)">-</button>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</div>
+

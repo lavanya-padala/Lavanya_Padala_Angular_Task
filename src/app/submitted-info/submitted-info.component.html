@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="submitted-data" *ngIf="data">
+    <h1>Submitted Data</h1>
+    <p><strong>Name:</strong> {{ data.name }}</p>
+    <p><strong>Mobile:</strong> {{ data.mobile }}</p>
+    <p><strong>Email:</strong> {{ data.email }}</p>
+    <p><strong>Address:</strong> {{ data.address }}</p>
+    <h2>Qualifications</h2>
+    <ul>
+      <li *ngFor="let qual of data.qualifications">
+        <strong>Education Level:</strong> {{ qual.educationLevel }}<br>
+        <strong>Passing Year:</strong> {{ qual.passingYear }}<br>
+        <strong>Percentage:</strong> {{ qual.percentage }}%
+      </li>
+    </ul>
+  </div>
+</div>
